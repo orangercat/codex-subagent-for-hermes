@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: plugin
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -17,10 +19,15 @@ jobs:
         with:
           repository: NousResearch/hermes-agent
           ref: d177b119e9c56c9ddc0b7379ffce52341ec06584
-          path: .ci/hermes-agent
-      - run: python -m pip install -e .ci/hermes-agent
+          path: hermes-agent
+      - run: python -m pip install -e hermes-agent
       - run: python -m py_compile __init__.py tests/verify_dual_module_regression.py
+        working-directory: plugin
       - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py
+        working-directory: plugin
       - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py --seed-legacy-v1-wrapper
+        working-directory: plugin
       - run: hermes plugins validate . --json
+        working-directory: plugin
       - run: hermes plugins doctor . --ci
+        working-directory: plugin
