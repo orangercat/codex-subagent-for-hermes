@@ -1,0 +1,7 @@
+name: codex-tier-delegate
+version: "0.1.0"
+description: Per-task Codex subagent delegation with an explicit model and reasoning effort.
+author: orangercat
+requires_hermes: ">=0.21.3, <0.22"
+provides_tools:
+  - delegate_codex

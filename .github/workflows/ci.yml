@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install "hermes-agent>=0.21.3,<0.22"
+      - run: python -m py_compile __init__.py tests/verify_dual_module_regression.py
+      - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py
+      - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py --seed-legacy-v1-wrapper
+      - run: hermes plugins validate . --json
+      - run: hermes plugins doctor . --ci
