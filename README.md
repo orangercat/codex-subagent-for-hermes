@@ -1,4 +1,4 @@
-# Hermes Codex Delegate
+# Codex Subagent for Hermes
 
 A Hermes plugin that starts an `openai-codex` subagent for an independent task. Each call chooses the Codex model and reasoning effort explicitly.
 
@@ -10,7 +10,7 @@ A Hermes plugin that starts an `openai-codex` subagent for an independent task. 
 ## Install
 
 ```bash
-hermes plugins install orangercat/codex-tier-delegate --enable
+hermes plugins install orangercat/codex-subagent-for-hermes --enable
 ```
 
 Restart a running Hermes gateway after installation.

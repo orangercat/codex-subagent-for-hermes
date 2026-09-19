@@ -1,4 +1,4 @@
-name: codex-tier-delegate
+name: codex-subagent-for-hermes
 version: "0.1.0"
 description: Per-task Codex subagent delegation with an explicit model and reasoning effort.
 author: orangercat

@@ -152,7 +152,7 @@ def register(ctx: Any) -> None:
 
     ctx.register_tool(
         name=_TOOL_NAME,
-        toolset="codex_tier_delegate",
+        toolset="codex_subagent_for_hermes",
         schema=_SCHEMA,
         handler=_registry_handler,
     )

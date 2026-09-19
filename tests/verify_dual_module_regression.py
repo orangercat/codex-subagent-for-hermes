@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression harness for profile-multiplexed codex-tier-delegate imports.
+"""Regression harness for profile-multiplexed codex-subagent-for-hermes imports.
 
 It deliberately imports one plugin source twice under distinct package module names,
 mirroring PluginLoaderMixin._directory_module_name().  The fake delegate_task is a
@@ -18,7 +18,7 @@ import types
 from pathlib import Path
 from typing import Any
 
-DEFAULT_SOURCE = Path.home() / ".hermes/plugins/codex-tier-delegate/__init__.py"
+DEFAULT_SOURCE = Path.home() / ".hermes/plugins/codex-subagent-for-hermes/__init__.py"
 
 
 def _install_fake_runtime(seed_legacy_v1_wrapper: bool = False) -> tuple[types.ModuleType, dict[str, Any]]:
@@ -115,8 +115,8 @@ def _effort(result: dict[str, Any]) -> Any:
 
 def run(source: Path, seed_legacy_v1_wrapper: bool = False) -> None:
     delegate_tool, captured = _install_fake_runtime(seed_legacy_v1_wrapper)
-    first = _load(source, "hermes_plugins.codex_tier_delegate")
-    second = _load(source, "hermes_plugins.codex_tier_delegate__home_stock_digest")
+    first = _load(source, "hermes_plugins.codex_subagent_for_hermes")
+    second = _load(source, "hermes_plugins.codex_subagent_for_hermes__home_stock_digest")
     first.register(_Ctx())
     first_executor = sys.modules["agent.inline_tool_executors"].INLINE_TOOL_EXECUTORS["delegate_codex"]
     first_result = _invoke(first_executor, "gpt-5.6-luna", "xhigh")
