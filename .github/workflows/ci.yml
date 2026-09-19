@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python -m pip install "hermes-agent>=0.21.3,<0.22"
+      - run: python -m pip install "hermes-agent @ git+https://github.com/NousResearch/hermes-agent.git@d177b119e9c56c9ddc0b7379ffce52341ec06584"
       - run: python -m py_compile __init__.py tests/verify_dual_module_regression.py
       - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py
       - run: python tests/verify_dual_module_regression.py --plugin-source __init__.py --seed-legacy-v1-wrapper
